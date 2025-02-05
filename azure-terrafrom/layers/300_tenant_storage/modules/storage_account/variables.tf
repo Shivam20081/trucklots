@@ -1,0 +1,32 @@
+variable "Env" {
+  type = string
+  description = "Enter the specifyed Environment"
+  validation {
+    condition = contains(["dev", "prod","qa","uat","demo"], var.Env)
+    error_message = "Please enter a valid value from dev qa uat prod"
+  }
+}
+
+locals{
+  EnvAcct = var.Env == "prod" ? "prod" : "nonp"
+}
+
+variable "rg_name" {
+  type = string
+}
+
+variable "counts" {
+  type = string
+}
+
+variable "key_vault_id" {
+  type = string
+}
+
+variable "frontend_url" {
+  type = string
+}
+
+variable "static_website" {
+  type = bool
+}
